@@ -31,6 +31,9 @@ function App() {
       </section>
 
       <div className="ticks"></div>
+      <div>
+        Binh test cicd
+      </div>
 
       <section id="next-steps">
         <div id="docs">
