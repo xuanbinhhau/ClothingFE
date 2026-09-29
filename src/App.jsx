@@ -32,7 +32,8 @@ function App() {
 
       <div className="ticks"></div>
       <div>
-        Binh test cicd
+        Bình test cicd
+        Ước đẹp như chai Hàn Quốc
       </div>
 
       <section id="next-steps">

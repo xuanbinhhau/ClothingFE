@@ -26,3 +26,21 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/feclothing:latest
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            docker pull xuanbinhtech/feclothing:latest
+
+            docker stop feclothing || true
+            docker rm feclothing || true
+
+            docker run -d \
+              --name feclothing \
+              --restart unless-stopped \
+              -p 8080:80 \
+              xuanbinhtech/feclothing:latest
